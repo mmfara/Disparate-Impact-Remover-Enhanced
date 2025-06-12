@@ -79,15 +79,21 @@ This work builds on the method introduced in:
 
 This project uses and extends open-source components from IBM's [AIF360](https://github.com/IBM/AIF360) and the [BlackBoxAuditing](https://github.com/algofairness/BlackBoxAuditing) toolkit. Your modifications may be subject to their respective licenses.
 
----
+## 📖 Citation
 
-Feel free to fork, improve, and contribute to promote fairness in machine learning!
+If you use this code in your research or applications, **please cite the following paper**:
 
-```
+> Farayola, Michael Mayowa, Malika Bendechache, Takfarinas Saber, Regina Connolly, and Irina Tal.  
+> *Enhancing Algorithmic Fairness: Integrative Approaches and Multi-Objective Optimization Application in Recidivism Models*.  
+> In **Proceedings of the 19th International Conference on Availability, Reliability and Security (ARES 2024)**, pages 1–10, ACM, 2024.  
+> [https://doi.org/10.1145/3664476.3669978](https://doi.org/10.1145/3664476.3669978)
 
----
-
-✅ **You can copy everything above directly into a `README.md` file** and commit it to your GitHub repository.
-
-Let me know if you'd like to add badges, a sample output image, or Jupyter Notebook integration.
-```
+BibTeX:
+```bibtex
+@inproceedings{farayola2024enhancing,
+  title={Enhancing Algorithmic Fairness: Integrative Approaches and Multi-Objective Optimization Application in Recidivism Models},
+  author={Farayola, Michael Mayowa and Bendechache, Malika and Saber, Takfarinas and Connolly, Regina and Tal, Irina},
+  booktitle={Proceedings of the 19th International Conference on Availability, Reliability and Security},
+  pages={1--10},
+  year={2024}
+}
