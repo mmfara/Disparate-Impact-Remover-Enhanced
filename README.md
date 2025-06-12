@@ -1,4 +1,4 @@
-# Enhanced Disparate Impact Remover (Intersectional Version)
+# Enhanced Disparate Impact Remover (Intersectionality Version)
 
 This repository provides a customized implementation of the **Disparate Impact Remover (DIR)** algorithm for preprocessing datasets to reduce algorithmic bias. It supports **intersectional fairness** by applying group-wise feature repair independently across combinations of protected attributes (e.g., race *and* gender).
 
