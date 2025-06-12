@@ -4,7 +4,7 @@ This repository provides a customized implementation of the **Disparate Impact R
 
 ## 🔍 Overview
 
-Disparate Impact Remover is a fairness-aware preprocessing technique that modifies non-protected features to reduce disparate impact, while preserving within-group ranking. This implementation extends the original [AIF360](https://github.com/IBM/AIF360) version by:
+Disparate Impact Remover is a fairness-aware preprocessing technique that modifies non-protected features to reduce disparate impact, while preserving within-group ranking. This implementation extends the original [AIF360]([https://github.com/IBM/AIF360](https://aif360.readthedocs.io/en/stable/modules/generated/aif360.algorithms.preprocessing.DisparateImpactRemover.html#id2)) version by:
 
 - Supporting **multiple** protected attributes (intersectional groups)
 - Skipping repair on **small groups** (to avoid distortion)
