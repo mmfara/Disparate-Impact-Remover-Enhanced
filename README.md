@@ -77,7 +77,7 @@ This work builds on the method introduced in:
 
 ## 📄 License
 
-This project uses and extends open-source components from IBM's [AIF360](https://github.com/IBM/AIF360) and the [BlackBoxAuditing](https://github.com/algofairness/BlackBoxAuditing) toolkit. Your modifications may be subject to their respective licenses.
+This project uses and extends open-source components from IBM's [AIF360](https://github.com/IBM/AIF360) and the [BlackBoxAuditing](https://github.com/algofairness/BlackBoxAuditing) toolkit.
 
 ## 📖 Citation
 
