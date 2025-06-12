@@ -13,11 +13,11 @@ Disparate Impact Remover is a fairness-aware preprocessing technique that modifi
 
 ## 📦 Features
 
-- ✅ Intersectional group handling
-- ✅ Repair level control (`repair_level` between 0.0 and 1.0)
-- ✅ Group-size threshold (`min_group_size`)
-- ✅ Robust error handling and logging
-- ✅ Compatible with `aif360`'s `Transformer` API
+- Intersectional group handling
+- Repair level control (`repair_level` between 0.0 and 1.0)
+- Group-size threshold (`min_group_size`)
+- Robust error handling and logging
+- Compatible with `aif360`'s `Transformer` API
 
 ## 🚀 Installation
 
