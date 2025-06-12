@@ -1,6 +1,3 @@
-You're right — thanks for the nudge. Below is the **complete, ready-to-copy** `README.md` in proper Markdown format for your GitHub repo:
-
----
 
 ````markdown
 # Disparate Impact Remover (Intersectional Version)
