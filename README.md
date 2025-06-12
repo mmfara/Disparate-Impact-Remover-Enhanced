@@ -1,5 +1,3 @@
-
-````markdown
 # Disparate Impact Remover (Intersectional Version)
 
 This repository provides a customized implementation of the **Disparate Impact Remover (DIR)** algorithm for preprocessing datasets to reduce algorithmic bias. It supports **intersectional fairness** by applying group-wise feature repair independently across combinations of protected attributes (e.g., race *and* gender).
@@ -28,6 +26,7 @@ Make sure you have the following dependencies installed:
 ```bash
 pip install aif360
 pip install git+https://github.com/algofairness/BlackBoxAuditing
+
 ````
 
 > Note: `BlackBoxAuditing` is required for the underlying repair algorithm.
