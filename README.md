@@ -1,33 +1,41 @@
-# Enhanced Disparate Impact Remover (Intersectionality Version)
+# Enhanced Disparate Impact Remover (DIR⁺)
 
-This repository provides a customized implementation of the **Disparate Impact Remover (DIR)** algorithm for preprocessing datasets to reduce algorithmic bias. It supports **intersectional fairness** by applying group-wise feature repair independently across combinations of protected attributes (e.g., race *and* gender).
+This repository provides a customized implementation of the **Disparate Impact Remover (DIR)** algorithm for preprocessing datasets to reduce algorithmic bias. This enhanced version—**DIR⁺**—supports **intersectional fairness** by applying group-wise feature repair across combinations of protected attributes (e.g., race *and* gender), with added controls for selective repair and group-level transparency.
+
 
 ## 🔍 Overview
 
-Disparate Impact Remover is a fairness-aware preprocessing technique that modifies non-protected features to reduce disparate impact, while preserving within-group ranking. This implementation extends the original [AIF360]([https://github.com/IBM/AIF360](https://aif360.readthedocs.io/en/stable/modules/generated/aif360.algorithms.preprocessing.DisparateImpactRemover.html#id2)) version by:
+Disparate Impact Remover is a fairness-aware preprocessing technique that modifies non-protected features to reduce disparate impact, while preserving within-group rank ordering. This implementation extends the original [AIF360 Disparate Impact Remover](https://aif360.readthedocs.io/en/stable/modules/generated/aif360.algorithms.preprocessing.DisparateImpactRemover.html) by introducing several key improvements:
 
-- Supporting **multiple** protected attributes (intersectional groups)
-- Skipping repair on **small groups** (to avoid distortion)
-- Handling **exceptions gracefully**
-- Offering **verbose logging** for transparency
+**DIR⁺ extends this method by:**
+- ✅ Supporting **intersectional repair** over multiple protected attributes (e.g., `race + gender`)
+- ✅ Allowing **selective group repair** using the `groups_to_repair` parameter
+- ✅ Skipping repair for **statistically small or fragile groups** via `min_group_size`
+- ✅ Providing **transparent group-level logging** and diagnostics
+- ✅ Maintaining compatibility with AIF360’s `Transformer` API
+
+DIR⁺ is ideal for fairness research where intersectional group distinctions (e.g., Black women, Latino men) are crucial and statistical dignity must be preserved.
+
+---
 
 ## 📦 Features
 
-- Intersectional group handling
-- Repair level control (`repair_level` between 0.0 and 1.0)
-- Group-size threshold (`min_group_size`)
-- Robust error handling and logging
-- Compatible with `aif360`'s `Transformer` API
+- Intersectional group handling via multiple protected attributes
+- Adjustable repair intensity (`repair_level`)
+- Minimum group size filtering (`min_group_size`)
+- Transparent repair control (`groups_to_repair`)
+- Robust error handling and verbose logging
+- Drop-in compatible with `aif360`'s `Transformer`-based pipelines
+
+---
 
 ## 🚀 Installation
 
-Make sure you have the following dependencies installed:
+Install the necessary dependencies:
 
 ```bash
 pip install aif360
 pip install git+https://github.com/algofairness/BlackBoxAuditing
-
-````
 
 > Note: `BlackBoxAuditing` is required for the underlying repair algorithm.
 
@@ -40,24 +48,27 @@ from aif360.datasets import BinaryLabelDataset
 # Load your dataset (BinaryLabelDataset)
 dataset = ...
 
-# Apply repair
-dir = DisparateImpactRemover(
+# Apply intersectional fairness repair
+dir_plus = DisparateImpactRemover(
     repair_level=0.8,
-    sensitive_attribute=['race', 'sex'],  # supports multiple!
+    sensitive_attribute=['race', 'sex'],   # supports intersectional attributes
     min_group_size=30,
+    groups_to_repair={'race=1|sex=0', 'race=1|sex=1'},
     verbose=True
 )
-repaired_dataset = dir.fit_transform(dataset)
-```
+
+repaired_dataset = dir_plus.fit_transform(dataset)
 
 ## ⚙️ Parameters
 
-| Parameter             | Description                                        |
-| --------------------- | -------------------------------------------------- |
-| `repair_level`        | Degree of fairness repair (0.0 = none, 1.0 = full) |
-| `sensitive_attribute` | Single or list of protected attribute names        |
-| `min_group_size`      | Minimum size of a group to apply repair (int)      |
-| `verbose`             | Enable/disable logging (bool)                      |
+| Parameter             | Type               | Description |
+|-----------------------|--------------------|-------------|
+| `repair_level`        | `float`            | Degree of fairness repair. `0.0` means no repair; `1.0` means full repair. |
+| `sensitive_attribute` | `str` or `list`    | Single or list of protected attribute names to define intersectional groups (e.g., `["race", "gender"]`). |
+| `min_group_size`      | `int`              | Minimum number of instances required for a group to be eligible for repair. Smaller groups are skipped. |
+| `groups_to_repair`    | `set` or `list`    | (Optional) Specific group labels to repair (e.g., `{"race=1|gender=0"}`). All other groups are skipped. |
+| `verbose`             | `bool`             | If `True`, logs repair status for each group (repaired, skipped, excluded). Default is `True`. |
+
 
 ## 📚 Reference
 
@@ -71,9 +82,12 @@ This work builds on the method introduced in:
 
 ## 🛠 Notes
 
-* Protected attributes are **restored unchanged** after repair.
-* Repair is applied **per group**, defined by combinations of protected attribute values.
-* Small groups are **skipped** to avoid noisy transformations.
+- 🛡️ Protected attributes are **restored unchanged** after repair to maintain dataset integrity.
+- 🧬 Repairs are applied **independently to each group**, where groups are defined by combinations of protected attribute values (e.g., `race=1|gender=0`).
+- 🚫 Groups that do not meet the `min_group_size` threshold are **automatically skipped** to prevent unreliable or noisy transformations.
+- 🎯 If `groups_to_repair` is specified, only those exact groups will be repaired; all others are excluded—even if large.
+- 📊 Verbose logging provides per-group repair status (`repaired`, `skipped`, `excluded`) for auditing and reproducibility.
+
 
 ## 📄 License
 
