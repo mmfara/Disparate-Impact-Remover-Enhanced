@@ -37,6 +37,8 @@ Install the necessary dependencies:
 pip install aif360
 pip install git+https://github.com/algofairness/BlackBoxAuditing
 
+---
+
 > Note: `BlackBoxAuditing` is required for the underlying repair algorithm.
 
 ## 🧪 Usage
