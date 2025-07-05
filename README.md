@@ -33,7 +33,7 @@ DIR⁺ is ideal for fairness research where intersectional group distinctions (e
 
 Install the necessary dependencies:
 
-```bash
+bash
 pip install aif360
 pip install git+https://github.com/algofairness/BlackBoxAuditing
 
@@ -43,7 +43,7 @@ pip install git+https://github.com/algofairness/BlackBoxAuditing
 
 ## 🧪 Usage
 
-```python
+python
 from your_module import DisparateImpactRemover
 from aif360.datasets import BinaryLabelDataset
 
@@ -105,7 +105,7 @@ If you use this code in your research or applications, **please cite the followi
 > [https://doi.org/10.1145/3664476.3669978](https://doi.org/10.1145/3664476.3669978)
 
 BibTeX:
-```bibtex
+bibtex
 @inproceedings{farayola2024enhancing,
   title={Enhancing Algorithmic Fairness: Integrative Approaches and Multi-Objective Optimization Application in Recidivism Models},
   author={Farayola, Michael Mayowa and Bendechache, Malika and Saber, Takfarinas and Connolly, Regina and Tal, Irina},
