@@ -105,7 +105,7 @@ If you use this code in your research or applications, **please cite the followi
 > [https://doi.org/10.1145/3664476.3669978](https://doi.org/10.1145/3664476.3669978)
 
 BibTeX:
-bibtex
+```bibtex
 @inproceedings{farayola2024enhancing,
   title={Enhancing Algorithmic Fairness: Integrative Approaches and Multi-Objective Optimization Application in Recidivism Models},
   author={Farayola, Michael Mayowa and Bendechache, Malika and Saber, Takfarinas and Connolly, Regina and Tal, Irina},
